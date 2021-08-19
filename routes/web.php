@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('homepage');
 });
+
+
+//Basic routes to allow for pages to be viewed on test webpage
+
+Route::get('/profile', function(){
+    return view('profile');
+});
