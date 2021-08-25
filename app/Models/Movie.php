@@ -11,4 +11,8 @@ class Movie extends Model
     use SoftDeletes;
     use HasFactory;
 
+    protected $casts = [
+        'release_date' => 'date'
+    ];
+
 }
