@@ -22,12 +22,12 @@ class MovieFactory extends Factory
     public function definition()
     {
         return [
-            //
+
             'title' => $this->faker->title(),
             'release_date' => $this->faker->date(),
-            'poster'=>'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-            'trailer'=>'https://www.youtube.com/watch?v=g4Hbz2jLxvQ',
-            'blurb'=>$this->faker->paragraph()
+            'poster' => 'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
+            'trailer' => 'https://www.youtube.com/watch?v=g4Hbz2jLxvQ',
+            'blurb' => $this->faker->paragraph()
         ];
     }
 }

@@ -22,9 +22,9 @@ class ReviewFactory extends Factory
     public function definition()
     {
         return [
-            //
-            'rate'=> $this->faker->randomDigit(5),
-            'comment'=> $this->faker->paragraph()
+
+            'rate' => $this->faker->randomDigit(5),
+            'comment' => $this->faker->paragraph()
         ];
     }
 }
