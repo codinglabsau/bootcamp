@@ -2,11 +2,21 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class celebrities extends Model
+class celebrities extends Authenticatable
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, Notifiable,SoftDeletes;
+
+
+    protected $fillable = [
+        'name', 
+        'DOB',
+        'Nationality',
+        'Bio',
+    ];
 }

@@ -22,7 +22,10 @@ class celebritiesFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'DOB' => $this->faker->date(),
+            'Nationality' => $this->faker->country(),
+            'Bio' => $this->faker->text,
         ];
     }
 }

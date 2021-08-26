@@ -15,6 +15,8 @@ class CreateMovieCelebritiesTable extends Migration
     {
         Schema::create('movie_celebrities', function (Blueprint $table) {
             $table->id();
+            $table->integer('movieID');
+            $table->integer('celebritiesID');
             $table->timestamps();
             $table->softdeletes();
         });
