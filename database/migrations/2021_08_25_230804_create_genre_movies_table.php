@@ -13,10 +13,10 @@ class CreateGenreMoviesTable extends Migration
      */
     public function up()
     {
-        Schema::create('genre__movies', function (Blueprint $table) {
+        Schema::create('genre_movies', function (Blueprint $table) {
             $table->id();
-            $table->integer('genre_id');
-            $table->integer('movie_id');
+            $table->unsignedInteger('genre_id');
+            $table->unsignedInteger('movie_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateGenreMoviesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genre__movies');
+        Schema::dropIfExists('genre_movies');
     }
 }
