@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Genre extends Model
+class Genre_Movie extends Model
 {
     use HasFactory;
-
-    public function movie()
-    {
-        return $this->belongsToMany(Movie::class);
-    }
 }

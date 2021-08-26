@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Movie::factory(10)->create();
         \App\Models\Review::factory(10)->create();
         \App\Models\Genre::factory(10)->create();
+        \App\Models\Genre_Movie::factory(10)->create();
     }
 }

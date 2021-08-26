@@ -15,4 +15,14 @@ class Movie extends Model
         'release_date' => 'date'
     ];
 
+    public function genres()
+    {
+        /*** function calls relation of Movie to Genre through genre_movies,
+         * with a foreign key of the model the relationship is definied in
+         * and a foreign key of the model the relationship is with
+         * */
+        return $this->belongsToMany(Genre::class); //(Many to relation, relation table medium, foreign key 1, foreign key 2)
+    }
+
+
 }
