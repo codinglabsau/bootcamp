@@ -24,7 +24,6 @@ class GenreMovieFactory extends Factory
     public function definition()
     {
         return [
-            //
             'genre_id' =>Genre::inRandomOrder()->first()->id,
             'movie_id' =>Movie::inRandomOrder()->first()->id
         ];
