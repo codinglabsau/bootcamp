@@ -27,8 +27,31 @@
             Movie Profile Page
         </header>
 
-        <div class="relative flex grid min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            {{movie->title}}
+        <div class="flex grid">
+            <div>
+                {{$movie->title}} : Title
+            </div>
+
+            <div>
+                <div>
+                    <img src="{{ url($movie->poster) }}">
+                </div>
+                <div>
+                    <video src="{{ url($movie->trailer) }}"> Trailer
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    {{$movie->release_date}} : Release Date
+                </div>
+                <div>
+                    {{$movie->blurb}} : Blurb
+                </div>
+            </div>
+
+
+
         </div>
     </body>
 </html>
