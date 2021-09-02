@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Celebrity extends Model
 {
-    use HasFactory, Notifiable,SoftDeletes;
+    use HasFactory,SoftDeletes;
 
 
     protected $fillable = [
