@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\movie_celebrities;
+use App\Models\CelebrityMovie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class movie_celebritiesFactory extends Factory
+class CelebrityMovieFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = movie_celebrities::class;
+    protected $model = CelebrityMovie::class;
 
     /**
      * Define the model's default state.

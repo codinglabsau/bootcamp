@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\celebrities;
+use App\Models\Celebrity;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class celebritiesFactory extends Factory
+class CelebrityFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = celebrities::class;
+    protected $model = Celebrity::class;
 
     /**
      * Define the model's default state.
@@ -23,9 +23,9 @@ class celebritiesFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'DOB' => $this->faker->date(),
-            'Nationality' => $this->faker->country(),
-            'Bio' => $this->faker->text,
+            'dob' => $this->faker->date(),
+            'nationality' => $this->faker->country(),
+            'bio' => $this->faker->text,
         ];
     }
 }

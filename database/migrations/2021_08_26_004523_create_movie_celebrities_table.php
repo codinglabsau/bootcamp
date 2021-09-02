@@ -1,8 +1,8 @@
 <?php
-
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
 
 class CreateMovieCelebritiesTable extends Migration
 {
@@ -15,8 +15,8 @@ class CreateMovieCelebritiesTable extends Migration
     {
         Schema::create('movie_celebrities', function (Blueprint $table) {
             $table->id();
-            $table->integer('movieID');
-            $table->integer('celebritiesID');
+            $table->integer('movie_id');
+            $table->integer('celebrity_id');
             $table->timestamps();
             $table->softdeletes();
         });

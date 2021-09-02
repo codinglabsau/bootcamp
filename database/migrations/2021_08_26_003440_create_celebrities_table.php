@@ -16,9 +16,9 @@ class CreateCelebritiesTable extends Migration
         Schema::create('celebrities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('DOB');
-            $table->string('Nationality');
-            $table->text('Bio');
+            $table->date('dob');
+            $table->string('nationality');
+            $table->text('bio');
             $table->timestamps();
             $table->softdeletes();
         });
