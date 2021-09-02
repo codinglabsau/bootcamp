@@ -10,12 +10,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Genre extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     public function movies() : Relations\BelongsToMany
     {
-        //calls relation of movie to genre through gerne_movie
         return $this->belongsToMany(Movie::class);
     }
 }
