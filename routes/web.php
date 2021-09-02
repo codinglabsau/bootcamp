@@ -1,7 +1,9 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +19,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//
+Route::get('movies', [MovieController::class, 'index'])->name('movies.index');
+
+Route::get('movies/{movie}', [MovieController::class, 'show'])->name('movies.show');
+
+//Route::get('movies', [MovieController::class, 'create'])->name('movies.create');
+
+// Route::get('movies/{movie}', [MovieController::class, 'edit'])->name('movies.edit');
+
+// Route::post('movies', [MovieController::class, 'store'])->name('movies.store');
+
+// Route::put('movies/{movie}', [MovieController::class, 'update'])->name('movies.update');
+
+// Route::delete('movies/{movie}', [MovieController::class, 'destory'])->name('movies.destroy');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
 
 require __DIR__.'/auth.php';

@@ -8,10 +8,21 @@ use App\Http\Controllers\Controller;
 
 class MovieController extends Controller
 {
-    public function index()
+    public function index() //print all data in Moives database
     {
-        return view('movies.movie', [
+        return view('movies.index', [
             'movies' => Movie::all()
         ]);
     }
+
+    public function show(Movie $movie)
+    {
+        return view('movies.show', compact('movie'));
+    }
+
+    public function create()
+    {
+        return view('movies.create');
+    }
+
 }

@@ -22,12 +22,13 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @foreach ($movies as $movie)
-                <a>
-                    {{ $movie }}
-                </a>
-            @endforeach
+
+        <header>
+            Movie Profile Page
+        </header>
+
+        <div class="relative flex grid min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+            {{movie->title}}
         </div>
     </body>
 </html>
