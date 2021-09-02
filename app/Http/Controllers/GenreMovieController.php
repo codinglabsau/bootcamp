@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genre_Movie;
+use App\Models\GenreMovie;
 use Illuminate\Http\Request;
 
 class GenreMovieController extends Controller
@@ -44,7 +44,7 @@ class GenreMovieController extends Controller
      * @param  \App\Models\Genre_Movie  $genre_Movie
      * @return \Illuminate\Http\Response
      */
-    public function show(Genre_Movie $genre_Movie)
+    public function show(GenreMovie $genre_Movie)
     {
         //
     }
@@ -55,7 +55,7 @@ class GenreMovieController extends Controller
      * @param  \App\Models\Genre_Movie  $genre_Movie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Genre_Movie $genre_Movie)
+    public function edit(GenreMovie $genre_Movie)
     {
         //
     }
@@ -67,7 +67,7 @@ class GenreMovieController extends Controller
      * @param  \App\Models\Genre_Movie  $genre_Movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Genre_Movie $genre_Movie)
+    public function update(Request $request, GenreMovie $genre_Movie)
     {
         //
     }
@@ -78,7 +78,7 @@ class GenreMovieController extends Controller
      * @param  \App\Models\Genre_Movie  $genre_Movie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Genre_Movie $genre_Movie)
+    public function destroy(GenreMovie $genre_Movie)
     {
         //
     }

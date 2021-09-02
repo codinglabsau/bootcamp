@@ -4,17 +4,17 @@ namespace Database\Factories;
 
 use App\Models\Genre;
 use App\Models\Movie;
-use App\Models\Genre_Movie;
+use App\Models\GenreMovie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class Genre_MovieFactory extends Factory
+class GenreMovieFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Genre_Movie::class;
+    protected $model = GenreMovie::class;
 
     /**
      * Define the model's default state.
@@ -24,7 +24,6 @@ class Genre_MovieFactory extends Factory
     public function definition()
     {
         return [
-            //
             'genre_id' =>Genre::inRandomOrder()->first()->id,
             'movie_id' =>Movie::inRandomOrder()->first()->id
         ];

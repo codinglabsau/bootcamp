@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/movies', function (){
-    return view('movie');
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/movies', [MovieController::class, 'index'])->name('movielist');
+require __DIR__.'/auth.php';

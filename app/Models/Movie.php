@@ -2,26 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Movie extends Model
 {
-    use SoftDeletes;
-    use HasFactory;
+    use SoftDeletes, HasFactory;
 
     protected $casts = [
         'release_date' => 'date'
     ];
 
-    public function genres()
+    public function genres() : Relations\BelongsToMany
     {
-        /*** function calls relation of Movie to Genre through genre_movies,
-         * with a foreign key of the model the relationship is definied in
-         * and a foreign key of the model the relationship is with
-         * */
-        return $this->belongsToMany(Genre::class); //(Many to relation, relation table medium, foreign key 1, foreign key 2)
+        /*** calls relation of movie to genre through gerne_movie
+        */
+        return $this->belongsToMany(Genre::class);
     }
 
 
