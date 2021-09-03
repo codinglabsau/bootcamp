@@ -23,17 +23,19 @@
     </head>
     <body class="antialiased">
 
-        <header>
-            <button> Add </button>
-        </header>
-
+            <a href="{{ route('movies.create') }}">
+                <button> Add </button>
+            </a>
         <div class="relative flex grid min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @foreach ($movies as $movie)
             <ul>
                 <li>
                     <a href="{{ route('movies.show', $movie) }}">
-                        {{ $movie->title }} : {{$movie->release_date}}
+                        {{ $movie->title }} :
                     </a>
+                    <div>
+                        {{$movie->release_date}}
+                    </div>
                 </li>
             </ul>
             @endforeach

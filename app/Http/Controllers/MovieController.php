@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use phpDocumentor\Reflection\DocBlock\Tag;
 
 class MovieController extends Controller
 {
@@ -24,6 +25,22 @@ class MovieController extends Controller
     public function create()
     {
         return view('movies.create');
+    }
+
+    public function store(Request $request)
+    {
+        Movie::create($request->validate([
+            'title' => ['required', 'string', 'min:1'],
+            ])
+        );
+        return redirect()->route('movies.index')->with('success', 'Movie added');
+    }
+
+    public function destroy(Movie $movie)
+    {
+        $movie->delete();
+
+        return redirect()->route('movies.index')->with('success', 'Movie successfully deleted');
     }
 
 }
