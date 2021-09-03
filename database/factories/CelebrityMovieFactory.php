@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Celebrity;
 use App\Models\CelebrityMovie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,8 @@ class CelebrityMovieFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'celebrity_id' => Celebrity::inRandomOrder()->first()->id,
+            'movie_id' => $this->faker->randomDigitNot(8),
         ];
     }
 }
