@@ -16,6 +16,14 @@ class Movie extends Model
         'release_date' => 'date'
     ];
 
+    protected $fillable = [
+        'title',
+        'poster',
+        'trailer',
+        'blurb'
+
+    ];
+
     public function genres() : Relations\BelongsToMany
     {
         /*** calls relation of movie to genre through gerne_movie

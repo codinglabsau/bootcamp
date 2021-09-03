@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use phpDocumentor\Reflection\DocBlock\Tag;
@@ -29,10 +30,23 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
-        Movie::create($request->validate([
-            'title' => ['required', 'string', 'min:1'],
-            ])
-        );
+
+        $request->validate([
+            'title' => ['required', 'string', 'min:3'],
+            'release_date' => ['required', 'date'],
+            'poster' => ['required', 'string', 'min:16'],
+            'trailer' => ['required', 'string', 'min:16'],
+            'blurb' => ['required', 'string']
+        ]);
+
+        Movie::create([
+            'title' => request()->input('title'),
+            'release_date' => Carbon::createFromFormat('d-m-Y', request()->input('release_date')),
+            'poster' => request()->input('poster'),
+            'trailer' => request()->input('trailer'),
+            'blurb' => request()->input('trailer')
+
+        ]);
         return redirect()->route('movies.index')->with('success', 'Movie added');
     }
 

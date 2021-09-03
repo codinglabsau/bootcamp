@@ -27,20 +27,48 @@
             This is to create a new movie entry point
             <div>
                 <input
-                type="text"
-                name="title"
-                id="title"
-                value= "{{ old('title') }}"
-                >
-
+                    type="text"
+                    name="title"
+                    id="title"
+                    value= "{{ old('title') }}"
+                > : Title
             </div>
             <div>
-                <a href="{{ route('movies.store')}}">
-                    <button> Submit </button>
-                </a>
+                <input
+                    type="date"
+                    name="release_date"
+                    id="release_date"
+                    value="{{ old('release_date') }}"
+                >
+            </div>
+            <div>
+                <input
+                    type="text"
+                    name="poster"
+                    id="poster"
+                    value= "{{ old('poster') }}"
+                > : Poster URL
+            </div>
+            <div>
+                <input
+                    type="text"
+                    name="trailer"
+                    id="trailer"
+                    value= "{{ old('poster') }}"
+                > : Trailer URL
+            </div>
+            <div>
+                <input
+                    type="text"
+                    name="blurb"
+                    id="blurb"
+                    value= "{{ old('blurb') }}"
+                > : blurb URL
+            </div>
+            <div>
+                <button type="submit"> Submit </button>
             </div>
         </form>
-
     </body>
 </html>
 
