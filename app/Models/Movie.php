@@ -13,23 +13,15 @@ class Movie extends Model
     use SoftDeletes, HasFactory;
 
     protected $casts = [
-        'release_date' => 'date'
+        'release_date' => 'date',
     ];
 
-    protected $fillable = [
-        'title',
-        'poster',
-        'trailer',
-        'blurb'
+    protected $guarded = [];
 
-    ];
-
-    public function genres() : Relations\BelongsToMany
+    public function genres(): Relations\BelongsToMany
     {
         /*** calls relation of movie to genre through gerne_movie
-        */
+         */
         return $this->belongsToMany(Genre::class);
     }
-
-
 }

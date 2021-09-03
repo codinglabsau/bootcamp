@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movie;
 use Carbon\Carbon;
+use App\Models\Movie;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use phpDocumentor\Reflection\DocBlock\Tag;
 
 class MovieController extends Controller
 {
@@ -30,7 +28,6 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'title' => ['required', 'string', 'min:3'],
             'release_date' => ['required', 'date'],
@@ -41,12 +38,12 @@ class MovieController extends Controller
 
         Movie::create([
             'title' => request()->input('title'),
-            'release_date' => Carbon::createFromFormat('d-m-Y', request()->input('release_date')),
+            'release_date' => Carbon::parse(request()->input('release_date'))->format('d-m-Y'),
             'poster' => request()->input('poster'),
             'trailer' => request()->input('trailer'),
             'blurb' => request()->input('trailer')
-
         ]);
+
         return redirect()->route('movies.index')->with('success', 'Movie added');
     }
 
