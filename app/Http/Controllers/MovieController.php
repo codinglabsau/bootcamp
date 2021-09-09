@@ -45,6 +45,24 @@ class MovieController extends Controller
         ]);
 
         return redirect()->route('movies.index')->with('success', 'Movie added');
+
+    }
+
+    public function edit(Movie $movie)
+    {
+        return view('movies.edit', compact('movie'));
+    }
+
+    public function update(Request $request, Movie $movie)
+    {
+        $movie->update($request->validate([
+            'title' => ['required', 'string', 'min:3'],
+            'release_date' => ['required', 'date'],
+            'poster' => ['required', 'string', 'min:16'],
+            'trailer' => ['required', 'string', 'min:16'],
+            'blurb' => ['required', 'string']
+        ]));
+        return redirect()->route('movies.show', $movie)->with('success', 'Movie added');
     }
 
     public function destroy(Movie $movie)

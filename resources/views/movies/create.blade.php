@@ -39,7 +39,7 @@
                     name="release_date"
                     id="release_date"
                     value="{{ old('release_date') }}"
-                >
+                > Release_date
             </div>
             <div>
                 <input

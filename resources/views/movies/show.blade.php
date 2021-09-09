@@ -21,6 +21,8 @@
             }
         </style>
     </head>
+
+
     <body class="antialiased">
 
         <header>
@@ -34,7 +36,7 @@
 
             <div>
                 <div>
-                    <img src="{{ url($movie->poster) }}">
+                    <img src="{{ url($movie->poster) }}"> Poster
                 </div>
                 <div>
                     <video src="{{ url($movie->trailer) }}"> Trailer
@@ -49,8 +51,17 @@
                     {{$movie->blurb}} : Blurb
                 </div>
             </div>
+            <div>
+                <a href="{{ route('movies.edit', $movie) }}">
+                    <button> EDIT </button>
+                </a>
+            </div>
 
-
+            <form method="POST">
+                @csrf
+                @method('DELETE')
+                <button> DELETE </button>
+            </form>
 
         </div>
     </body>
