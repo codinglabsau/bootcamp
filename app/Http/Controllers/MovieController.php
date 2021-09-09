@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Movie;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class MovieController extends Controller
 {
@@ -28,20 +30,14 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        Movie::create([
+            $request->validate([
             'title' => ['required', 'string', 'min:3'],
             'release_date' => ['required', 'date'],
             'poster' => ['required', 'string', 'min:16'],
             'trailer' => ['required', 'string', 'min:16'],
-            'blurb' => ['required', 'string']
-        ]);
-
-        Movie::create([
-            'title' => request()->input('title'),
-            'release_date' => Carbon::parse(request()->input('release_date'))->format('d-m-Y'),
-            'poster' => request()->input('poster'),
-            'trailer' => request()->input('trailer'),
-            'blurb' => request()->input('trailer')
+            'blurb' => ['required', 'string', 'max:500']
+            ])
         ]);
 
         return redirect()->route('movies.index')->with('success', 'Movie added');
@@ -60,7 +56,7 @@ class MovieController extends Controller
             'release_date' => ['required', 'date'],
             'poster' => ['required', 'string', 'min:16'],
             'trailer' => ['required', 'string', 'min:16'],
-            'blurb' => ['required', 'string']
+            'blurb' => ['required', 'string', 'max:500']
         ]));
         return redirect()->route('movies.show', $movie)->with('success', 'Movie added');
     }
