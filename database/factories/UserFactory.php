@@ -31,7 +31,6 @@ class UserFactory extends Factory
             'is_admin' => false
         ];
     }
-
     /**
      * Indicate that the model's email address should be unverified.
      *

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\UserController;
+use App\Http\Controllers\CelebrityController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,24 @@ use app\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('celebrities', [CelebrityController::class, 'index'])->name('celebrities.index');
+
+Route::get('celebrity/create', [CelebrityController::class, 'create'])->name('celebrities.create');
+
+Route::get('celebrities/{celebrity}/edit', [CelebrityController::class, 'edit'])->name('celebrities.edit');
+
+Route::get('celebrities/{celebrity}', [CelebrityController::class, 'show'])->name('celebrities.show');
+
+Route::post('celebrities', [CelebrityController::class, 'store'])->name('celebrities.store');
+
+Route::put('celebrities/{celebrity}', [CelebrityController::class, 'update'])->name('celebrities.update');
+
+Route::delete('celebrities/{celebrity}', [CelebrityController::class, 'destroy'])->name('celebrities.destroy');
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

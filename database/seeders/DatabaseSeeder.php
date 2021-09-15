@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\Review;
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         Celebrity::factory(10)->create();
         CelebrityMovie::factory(10)->create();
         GenreMovie::factory(10)->create();
+        User::factory(10)->create();
     }
 }

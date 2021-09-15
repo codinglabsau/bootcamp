@@ -4,12 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    function index()
+    public function index()
     {
-        return view('users.index');
+        return view('users.index', [
+            'users' => User::all()
+        ]);
+    }
+
+    public function show(User $user)
+    {
+        return view('users.show', compact('user'));
+    }
+
+    public function create()
+    {
+        return view('users.create');
     }
 }
