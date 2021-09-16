@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Models\Celebrity;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class CelebrityController extends Controller
     public function index() //print all data in Celebrity database
     {
         return view('celebrities.index', [
-            'celebrities' => Celebrity::all()
+            'celebrities' => Celebrity::paginate(5)
         ]);
     }
 

@@ -40,5 +40,8 @@
 
 
         </div>
+
+
+        {{ $celebrities->links() }}
     </body>
 </html>

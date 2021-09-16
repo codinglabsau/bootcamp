@@ -31,10 +31,6 @@ Route::put('celebrities/{celebrity}', [CelebrityController::class, 'update'])->n
 
 Route::delete('celebrities/{celebrity}', [CelebrityController::class, 'destroy'])->name('celebrities.destroy');
 
-
-
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
