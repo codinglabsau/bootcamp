@@ -43,7 +43,7 @@ class MovieController extends Controller
             ])
         ]);
 
-        return redirect()->route('movies.index')->with('success', 'Movie added');
+        return redirect()->route('movies.index')->with('success', 'New movie has been added to the website');
 
     }
 
@@ -61,14 +61,14 @@ class MovieController extends Controller
             'trailer' => ['required', 'string', 'min:16'],
             'blurb' => ['required', 'string', 'max:500']
         ]));
-        return redirect()->route('movies.show', $movie)->with('success', 'Movie added');
+        return redirect()->route('movies.show', $movie)->with('success', 'Selected movie has been updated successfully');
     }
 
     public function destroy(Movie $movie)
     {
         $movie->delete();
 
-        return redirect()->route('movies.index')->with('success', 'Movie successfully deleted');
+        return redirect()->route('movies.index')->with('success', 'Slected movie has been removed from website');
     }
 
 }
