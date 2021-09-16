@@ -25,46 +25,29 @@
         <form action="{{ route('movies.store')}}" method="POST">
             @csrf
             This is to create a new movie entry point
+
+            <!--Title-->
             <div>
-                <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    value= "{{ old('title') }}"
-                > : Title
+                <x-input type="text" name="title" id="title" :value="old('title')"/>
+            </div>
+
+            <div>
+                <!--Release Date-->
+                <x-input type="date" name="release_date" id="release_date" :value="old('release_date')"/>
             </div>
             <div>
-                <input
-                    type="date"
-                    name="release_date"
-                    id="release_date"
-                    value="{{ old('release_date') }}"
-                > Release_date
+                <!--Poster URL-->
+                <x-input type="text" name="poster" id="poster" :value="old('poster')"/>
             </div>
             <div>
-                <input
-                    type="text"
-                    name="poster"
-                    id="poster"
-                    value= "{{ old('poster') }}"
-                > : Poster URL
+                <!--Trailer URL-->
+                <x-input type="text" name="trailer" id="trailer" :value="old('trailer')"/>
             </div>
             <div>
-                <input
-                    type="text"
-                    name="trailer"
-                    id="trailer"
-                    value= "{{ old('poster') }}"
-                > : Trailer URL
+                <!--blurb URL-->
+                <x-input type="text" name="blurb" id="blurb" :value="old('blurb')"/>
             </div>
-            <div>
-                <input
-                    type="text"
-                    name="blurb"
-                    id="blurb"
-                    value= "{{ old('blurb') }}"
-                > : blurb URL
-            </div>
+
             <div>
                 <button type="submit"> Submit </button>
             </div>

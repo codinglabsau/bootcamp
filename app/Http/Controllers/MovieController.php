@@ -13,8 +13,11 @@ class MovieController extends Controller
     public function index() //print all data in Moives database
     {
         return view('movies.index', [
-            'movies' => Movie::all()
+            'movies' => Movie::orderBy('title', 'ASC')
+            ->orderBy('release_date', 'DESC')
+            ->paginate(5)
         ]);
+
     }
 
     public function show(Movie $movie)
