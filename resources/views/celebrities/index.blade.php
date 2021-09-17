@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        Celebrity Page
+        Celebrities Page
     </x-slot>
-            <a href="{{ route('celebrities.create') }}">
-                <button> Add </button>
-            </a>
+        <a href="{{ route('celebrities.create') }}">
+            <button> Add </button>
+        </a>
         <div class="relative flex grid min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @foreach ($celebrities as $celebrity)
             <ul>
@@ -19,5 +19,5 @@
             </ul>
             @endforeach
         </div>
-        {{ $celebrities->links() }}
+{{ $celebrities->links() }}
 </x-app-layout>

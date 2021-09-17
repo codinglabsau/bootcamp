@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Celebrity Profile
+        {{$celebrity->name}}
     </x-slot>
         <div class="flex grid">
             <div>
@@ -19,6 +19,7 @@
             <div>
                 <div>
                     Bio: {{$celebrity->bio}}
+                </div>
             </div>
             <div>
                 <a href="{{ route('celebrities.edit', $celebrity) }}">

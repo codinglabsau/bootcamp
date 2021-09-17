@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use App\Models\Celebrity;
 use Illuminate\Http\Request;
 
@@ -12,14 +11,13 @@ class CelebrityController extends Controller
     public function index() //print all data in Celebrity database
     {
         return view('celebrities.index', [
-            'celebrities' => Celebrity::paginate(5)
+            'celebrities' => Celebrity::orderBy('name', 'asc')->paginate(5)
         ]);
     }
 
     public function show(Celebrity $celebrity)
     {
         return view('celebrities.show', compact('celebrity'));
-        // similar to return view('celebrities.show', $celebrity=>celebrity);
     }
 
     public function create()
@@ -53,6 +51,7 @@ class CelebrityController extends Controller
             'nationality' => ['required', 'string', 'min:4'],
             'bio' => ['required', 'string'],
         ]));
+        
         return redirect()->route('celebrities.show', $celebrity)->with('success', 'Celebrity added');
     }
 

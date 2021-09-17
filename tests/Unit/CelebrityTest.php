@@ -11,6 +11,8 @@ class CelebrityTest extends TestCase
      *
      * @return void
      */
+    
+    /** @test  */
     public function test_example()
     {
         $this->assertTrue(true);
