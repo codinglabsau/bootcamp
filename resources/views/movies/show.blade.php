@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <x-slot name="header">
         Movie Profile Page
     </x-slot>
@@ -9,10 +9,12 @@
 
         <div>
             <div>
-                <img src="{{ url($movie->poster) }}"> Poster
+                <img src="{{ url($movie->poster) }}" alt="poster"> Poster
             </div>
             <div>
-                <video src="{{ url($movie->trailer) }}"> Trailer
+                <iframe width="420" height="315"
+                        src="{{$movie->trailer}}">
+                </iframe>
             </div>
         </div>
 
@@ -37,5 +39,5 @@
             <button> DELETE </button>
         </form>
     </div>
-</x-app-layout>
+</x-guest-layout>
 

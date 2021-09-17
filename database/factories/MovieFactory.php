@@ -25,7 +25,7 @@ class MovieFactory extends Factory
             'title' => $this->faker->sentence,
             'release_date' => $this->faker->date(),
             'poster' => 'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-            'trailer' => 'https://www.youtube.com/watch?v=g4Hbz2jLxvQ',
+            'trailer' => 'https://www.youtube.com/embed/g4Hbz2jLxvQ',
             'blurb' => $this->faker->paragraph()
         ];
     }
