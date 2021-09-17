@@ -35,6 +35,10 @@ Route::put('movies/{movie}', [MovieController::class, 'update'])->name('movies.u
 Route::delete('movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
 
 
+// Route::get('/home', function(){
+//     return view('home');
+// })->name('homepage');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

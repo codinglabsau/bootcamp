@@ -1,30 +1,49 @@
-
-<html>
-
-    <body class="antialiased">
-        <form action="{{ route('movies.update', $movie)}}" method="POST">
+<x-guest-layout>
+    <div>
+        <x-form :action="route('movies.update', $movie)" method="POST" buttonLabel="UDPATE">
             @method('PUT')
             @csrf
-            <!--Title-->
-            <x-input type="text" name="title" id="title" :value="old('title', $movie->title)"/>
             <div>
-            <!--Date-->
-            <x-input type="date" name="release_date" id="release_date" :value="old('release_date', $movie->release_date)"/> :title
-            <div>
-            <!--Poster-->
-            <x-input type="text" name="poster" id="poster" :value="old('poster', $movie->poster)"/>
-            <div>
-            <!--Trailer-->
-            <x-input type="text" name="trailer" id="trailer" :value="old('trailer', $movie->trailer)"/>
-            <div>
-            <!--Blurb-->
-            <x-input type="text" name="blurb" id="blurb" :value="old('blurb', $movie->blurb)"/>
-            <div>
-                <button type="submit"> Update </button>
+                <!--Title-->
+                <div>
+                    <x-label for="title" value="Title"/>
+
+                    <x-input type="text" name="title" id="title" :value="old('title', $movie->title)"/>
+                </div>
+
+                <!--Release Date-->
+                <div>
+                    <x-label for="release_date" value="Release Date"/>
+
+                    <x-input type="date" name="release_date" id="release_date" :value="old('release_date', $movie->release_date->format('Y-m-d'))"/>
+                </div>
+
+                <!--Poster-->
+                <div>
+                    <x-label for="poster" value="Poster"/>
+
+                    <x-input type="text" name="poster" id="poster" :value="old('poster', $movie->poster)"/>
+                </div>
+
+                <!--Trailer-->
+                <div>
+                    <x-label for="trailer" value="Trailer"/>
+
+                    <x-input type="text" name="trailer" id="trailer" :value="old('trailer', $movie->trailer)"/>
+                </div>
+
+                <!--Blurb-->
+                <div>
+                    <x-label for="blurb" value="Blurb"/>
+
+                    <x-input type="text" name="blurb" id="blurb" :value="old('blurb', $movie->blurb)"/>
+                </div>
+
             </div>
-        </form>
-    </body>
-</html>
+        </x-form>
+    </div>
+</x-guest-layout>
+
 
 
 
