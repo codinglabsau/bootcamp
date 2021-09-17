@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//
+
 Route::get('movies', [MovieController::class, 'index'])->name('movies.index');
 
 Route::get('movies/create', [MovieController::class, 'create'])->name('movies.create');
@@ -35,7 +35,7 @@ Route::put('movies/{movie}', [MovieController::class, 'update'])->name('movies.u
 Route::delete('movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
 
 
-// Route::get('/home', function(){
+// Route::get(' ', function(){
 //     return view('home');
 // })->name('homepage');
 

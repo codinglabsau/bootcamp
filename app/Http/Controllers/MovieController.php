@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-
 class MovieController extends Controller
 {
     public function index() //print all data in Moives database
