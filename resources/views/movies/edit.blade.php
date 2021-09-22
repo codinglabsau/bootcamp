@@ -43,7 +43,8 @@
                     <div>
                         <x-label for="blurb" value="Blurb"/>
 
-                        <x-input type="text" name="blurb" id="blurb" :value="old('blurb', $movie->blurb)"/>
+                        <textarea name="blurb" id="blurb"> {{$movie->blurb}}</textarea>
+
                     </div>
 
                 </div>

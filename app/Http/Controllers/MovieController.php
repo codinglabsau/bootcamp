@@ -12,7 +12,7 @@ class MovieController extends Controller
         return view('movies.index', [
             'movies' => Movie::orderBy('title', 'ASC')
             ->orderBy('release_date', 'DESC')
-            ->paginate(5)
+            ->paginate(25)
         ]);
 
     }
@@ -20,25 +20,22 @@ class MovieController extends Controller
     public function show(Movie $movie)
     {
         return view('movies.show', compact('movie'));
-        // similar to return view('movies.show', $movie=>movie);
     }
 
     public function create()
     {
         return view('movies.create');
     }
-
     public function store(Request $request)
     {
-        Movie::create([
+        Movie::create(
             $request->validate([
             'title' => ['required', 'string', 'min:3'],
             'release_date' => ['required', 'date'],
             'poster' => ['required', 'string', 'min:16'],
             'trailer' => ['required', 'string', 'min:16'],
             'blurb' => ['required', 'string', 'max:500']
-            ])
-        ]);
+            ]));
 
         return redirect()->route('movies.index')->with('success', 'New movie has been added to the website');
 
