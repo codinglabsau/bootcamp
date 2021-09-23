@@ -11,7 +11,7 @@ class CelebrityController extends Controller
     public function index() //print all data in Celebrity database
     {
         return view('celebrities.index', [
-            'celebrities' => Celebrity::orderBy('name', 'asc')->paginate(5)
+            'celebrities' => Celebrity::orderBy('name', 'asc')->paginate(20)
         ]);
     }
 

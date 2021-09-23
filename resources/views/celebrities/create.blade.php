@@ -24,7 +24,7 @@
             <div>
                 <x-label for="bio" :value="__('Bio')" />
 
-                <textarea id="bio" class="block mt-1 w-60" type="text" name="bio" :value="old('bio')" required autofocus />
+                <textarea id="bio" name="Bio" rows="5" cols="25"></textarea>
             </div>
 
             <div>

@@ -15,6 +15,6 @@ class CelebrityTest extends TestCase
         $user = User::factory()->create();
 
         $this->actingAs($user)->get('/celebrities')
-                                ->assertOk();
+                              ->assertOk();
     }
 }
