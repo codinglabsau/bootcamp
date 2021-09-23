@@ -26,7 +26,9 @@
             <div>
                 <x-label for="bio" value="Bio"/>
 
-                <textarea type="bio" name="bio"  rows="5" cols="25" id="bio" :value="old('bio', $celebrity->bio)"></textarea>
+                <textarea type="bio" name="bio"  rows="5" cols="5" id="bio" >
+                    {{ old('bio', $celebrity->bio) }}
+                </textarea>
             </div>
             
             <div>

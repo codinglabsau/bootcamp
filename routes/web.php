@@ -19,7 +19,9 @@ Route::get('/', function () {
 
 Route::get('celebrities', [CelebrityController::class, 'index'])->name('celebrities.index');
 
-Route::get('celebrity/create', [CelebrityController::class, 'create'])->name('celebrities.create');
+Route::middleware(['admin'])->group(function () {
+    Route::get('celebrities/create', [CelebrityController::class, 'create'])->name('celebrities.create');
+});
 
 Route::get('celebrities/{celebrity}/edit', [CelebrityController::class, 'edit'])->name('celebrities.edit');
 
@@ -34,5 +36,8 @@ Route::delete('celebrities/{celebrity}', [CelebrityController::class, 'destroy']
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
+
 
 require __DIR__.'/auth.php';
