@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <a href="{{ route('movies.create') }}">
         <button> Add</button>
     </a>
@@ -13,4 +13,4 @@
             {{$movies->links()}}
         </div>
     </div>
-</x-guest-layout>
+</x-app-layout>

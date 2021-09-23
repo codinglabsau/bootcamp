@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <x-slot name="header">
         Movie Profile Page
     </x-slot>
@@ -42,5 +42,5 @@
         <button> DELETE </button>
         </form>
     </div>
-</x-guest-layout>
+</x-app-layout>
 

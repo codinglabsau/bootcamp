@@ -49,9 +49,7 @@
                         <x-label for="blurb" value="Blurb"/>
 
                         <textarea name="blurb" id="blurb"> {{$movie->blurb}}</textarea>
-
                     </div>
-
                 </div>
             </x-form>
         </div>
