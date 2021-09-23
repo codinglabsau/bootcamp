@@ -33,10 +33,13 @@
             </a>
         </div>
 
+        <div>
+
+
         <form method="POST">
             @csrf
             @method('DELETE')
-            <button> DELETE </button>
+        <button> DELETE </button>
         </form>
     </div>
 </x-guest-layout>

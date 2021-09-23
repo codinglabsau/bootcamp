@@ -20,9 +20,9 @@ Route::get('/', function () {
 
 Route::get('movies', [MovieController::class, 'index'])->name('movies.index');
 
-Route::get('movies/create', [MovieController::class, 'create'])->name('movies.create');
+Route::get('movies/create', [MovieController::class, 'create'])->middleware(['auth'])->name('movies.create');
 
-Route::get('movies/{movie}/edit', [MovieController::class, 'edit'])->name('movies.edit');
+Route::get('movies/{movie}/edit', [MovieController::class, 'edit'])->middleware(['auth'])->name('movies.edit');
 
 Route::get('movies/{movie}', [MovieController::class, 'show'])->name('movies.show');
 
@@ -30,8 +30,11 @@ Route::post('movies', [MovieController::class, 'store'])->name('movies.store');
 
 Route::put('movies/{movie}', [MovieController::class, 'update'])->name('movies.update');
 
-Route::delete('movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
+Route::delete('movies/{movie}', [MovieController::class, 'destroy'])->middleware(['auth'])->name('movies.destroy');
 
+Route::get('delete', function () {
+    return view('movies.delete');
+});
 
 // Route::get(' ', function(){
 //     return view('home');
