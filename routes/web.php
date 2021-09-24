@@ -21,17 +21,14 @@ Route::get('celebrities', [CelebrityController::class, 'index'])->name('celebrit
 
 Route::middleware(['admin'])->group(function () {
     Route::get('celebrities/create', [CelebrityController::class, 'create'])->name('celebrities.create');
+    Route::get('celebrities/{celebrity}/edit', [CelebrityController::class, 'edit'])->name('celebrities.edit');
+    Route::put('celebrities/{celebrity}', [CelebrityController::class, 'update'])->name('celebrities.update');
+    Route::delete('celebrities/{celebrity}', [CelebrityController::class, 'destroy'])->name('celebrities.destroy');
 });
-
-Route::get('celebrities/{celebrity}/edit', [CelebrityController::class, 'edit'])->name('celebrities.edit');
 
 Route::get('celebrities/{celebrity}', [CelebrityController::class, 'show'])->name('celebrities.show');
 
 Route::post('celebrities', [CelebrityController::class, 'store'])->name('celebrities.store');
-
-Route::put('celebrities/{celebrity}', [CelebrityController::class, 'update'])->name('celebrities.update');
-
-Route::delete('celebrities/{celebrity}', [CelebrityController::class, 'destroy'])->name('celebrities.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
