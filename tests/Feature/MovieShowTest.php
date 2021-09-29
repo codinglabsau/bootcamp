@@ -21,7 +21,7 @@ class MovieShowTest extends TestCase
 
         $response = $this->get('/movies/'.$movie->id);
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     public function test_movies_show_return_404_for_non_existent_movie()

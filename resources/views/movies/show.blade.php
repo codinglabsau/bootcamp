@@ -1,12 +1,31 @@
 <x-app-layout>
     <x-slot name="header">
-        Movie Profile Page
-    </x-slot>
-    <div class="flex grid">
-        <div>
-            {{$movie->title}} : Title
+        <div class="flex justify-between">
+            <div>
+                <h2 class="font-semibold text-xl leading-tight">
+                    {{ __($movie->title) }}
+                </h2>
+            </div>
+
+            <div class="flex grid grid-cols-2">
+                <div>
+                    <a href="{{ route('movies.edit', $movie) }}">
+                        <button> EDIT </button>
+                    </a>
+                </div>
+                <div>
+                    <form method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button> DELETE </button>
+                    </form>
+                </div>
+            </div>
         </div>
 
+
+    </x-slot>
+    <div class="flex grid">
         <div>
             <div>
                 <img src="{{ url($movie->poster) }}" alt="poster"> Poster
@@ -25,22 +44,10 @@
             <div>
                 {{$movie->blurb}} : Blurb
             </div>
+            <div>
+
+            </div>
         </div>
-
-        <div>
-            <a href="{{ route('movies.edit', $movie) }}">
-                <button> EDIT </button>
-            </a>
-        </div>
-
-        <div>
-
-
-        <form method="POST">
-            @csrf
-            @method('DELETE')
-        <button> DELETE </button>
-        </form>
     </div>
 </x-app-layout>
 

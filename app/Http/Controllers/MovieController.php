@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Celebrity;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,7 @@ class MovieController extends Controller
 {
     public function index() //print all data in Moives database
     {
+
         return view('movies.index', [
             'movies' => Movie::orderBy('title', 'ASC')
             ->orderBy('release_date', 'DESC')

@@ -23,14 +23,14 @@ class MovieEditTest extends TestCase
 
         $this->actingAs($user)
         ->get('/movies/'.$movie->id.'/edit')
-        ->assertStatus(200);
+        ->assertOk();
     }
 
     public function test_movie_edit_guest_cannot_access()
     {
-        $movie = Movie::factory()->make();
+        $movie = Movie::factory()->create();
 
         $this->get('/movies/'.$movie->id.'/edit')
-        ->assertStatus(404);
+        ->assertRedirect('/login');
     }
 }

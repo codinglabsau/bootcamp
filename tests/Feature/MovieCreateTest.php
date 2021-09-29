@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Movie;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -21,7 +22,7 @@ class MovieCreateTest extends TestCase
 
         $this->actingAs($user)
         ->get('/movies')
-        ->assertStatus(200);
+        ->assertOk();
     }
 
     public function test_movie_create_new_movie_can_be_added() // No fails
@@ -37,9 +38,13 @@ class MovieCreateTest extends TestCase
             'blurb' => 'This is a sample blurb for the movie A Test movie'
         ])->assertSessionHasNoErrors()
         ->assertRedirect();
+
+        $this->assertDatabaseHas('movies', [
+            'title' => 'A Test movie'
+        ]);
     }
 
-    public function test_movie_create_invalid_data_throws_error()
+    public function test_movie_create_attribute_throw_validation_error()
     {
         $user = User::factory()->make();
 
@@ -54,7 +59,7 @@ class MovieCreateTest extends TestCase
         ->assertRedirect();
     }
 
-    public function test_movie_create_invalid_no_data_provided_for_key_variables(){
+    public function test_movie_create_attribute_throws_requirement_error(){
 
         $user = User::factory()->make();
 

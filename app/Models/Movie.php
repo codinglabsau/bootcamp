@@ -24,4 +24,9 @@ class Movie extends Model
          */
         return $this->belongsToMany(Genre::class);
     }
+
+    public function celebrities(): Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Celebrity::class);
+    }
 }

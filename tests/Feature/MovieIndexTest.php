@@ -15,8 +15,7 @@ class MovieIndexTest extends TestCase
      */
     public function test_movie_index_screen_can_render()
     {
-        $response = $this->get('/movies');
-
-        $response->assertStatus(200);
+        $this->get('/movies')
+        ->assertOk();
     }
 }

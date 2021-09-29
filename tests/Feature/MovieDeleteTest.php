@@ -22,6 +22,27 @@ class MovieDeleteTest extends TestCase
 
         $this->actingAs($user)
         ->delete('/movies/'.$movie->id)
-        ->assertRedirect();
+        ->assertRedirect('/movies');
+
+        //$this->assertSoftDeleted($movie->id);
+    }
+
+    public function test_movie_delete_guest_cannot_delete_movie()
+    {
+        $movie = Movie::factory()->create();
+
+        $this->delete('/movies/'.$movie->id)
+        ->assertRedirect('/login');
+
+
+    }
+
+    public function test_movie_delete_cannot_delete_nonexistent_movie()
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)
+        ->delete('/movies/123456')
+        ->assertNotFound();
     }
 }
