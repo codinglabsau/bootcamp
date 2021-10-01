@@ -21,7 +21,10 @@ class MovieController extends Controller
 
     public function show(Movie $movie)
     {
-        return view('movies.show', compact('movie'));
+
+        $movie->load('celebrities');
+        $movie->load('genres');
+        return view('movies.show', compact('movie'));//->with($celebrities);
     }
 
     public function create()

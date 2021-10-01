@@ -26,7 +26,7 @@
 
     </x-slot>
     <div class="flex grid">
-        <div>
+        <div class="flex grid grid-cols-2">
             <div>
                 <img src="{{ url($movie->poster) }}" alt="poster"> Poster
             </div>
@@ -39,12 +39,34 @@
 
         <div>
             <div>
-                {{$movie->release_date}} : Release Date
+                <div>
+                    {{$movie->release_date}}
+                </div>
+
             </div>
             <div>
-                {{$movie->blurb}} : Blurb
+                {{$movie->blurb}}
             </div>
             <div>
+                <x-label for="celebrity" value="Celebs"/>
+                @foreach ($movie->celebrities as $celebrity)
+                <a href="{{ route('test', $celebrity) }}" class="flex grid gap-2 grid-cols-2">
+                    <div>
+                        {{$celebrity->name}}
+                    </div>
+                </a>
+                @endforeach
+            </div>
+            <div>
+                <x-label for="genre" value="Genres"/>
+                @foreach ($movie->genres as $genre)
+                <a href="{{ route('genres.show', $genre) }}" class="flex grid gap-2 grid-cols-2">
+                    <div>
+                        {{$genre->type}}
+                    </div>
+                </a>
+
+                @endforeach
 
             </div>
         </div>

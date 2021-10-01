@@ -25,6 +25,6 @@ class Celebrity extends Model
 
     public function movies(): Relations\BelongsToMany
     {
-        return $this->belongsToMany(Movie::class);
+        return $this->belongsToMany(Movie::class, 'celebrity_movies');
     }
 }

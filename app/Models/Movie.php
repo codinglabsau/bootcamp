@@ -22,11 +22,11 @@ class Movie extends Model
     {
         /*** calls relation of movie to genre through gerne_movie
          */
-        return $this->belongsToMany(Genre::class);
+        return $this->belongsToMany(Genre::class, 'genre_movies');
     }
 
     public function celebrities(): Relations\BelongsToMany
     {
-        return $this->belongsToMany(Celebrity::class);
+        return $this->belongsToMany(Celebrity::class, 'celebrity_movies');
     }
 }
