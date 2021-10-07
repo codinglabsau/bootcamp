@@ -25,50 +25,53 @@
 
 
     </x-slot>
-    <div class="flex grid">
-        <div class="flex grid grid-cols-2">
-            <div>
-                <img src="{{ url($movie->poster) }}" alt="poster"> Poster
+    <div class="grid grid-flow-row px-4 py-8">
+        <div class="flex justity-between">
+            <div class="px-2 w-1/3">
+                <img src="{{ url($movie->poster) }}" alt="poster">
             </div>
-            <div>
+            <div class="w-2/3">
                 <iframe width="420" height="315"
+                        class="w-full h-full"
                         src="{{$movie->trailer}}">
                 </iframe>
             </div>
         </div>
 
-        <div>
-            <div>
-                <div>
-                    {{$movie->release_date}}
+        <div class="flex justify text-white text-lg font-bold py-8">
+            <div class="border-pink-400 border-2 border-opacity-75 grid grid-flow-row px-4 py-4 w-2/3">
+                <div class="flex grid-cols-2">
+                    <x-label for="celebrity" value="Celebs:" class="text-lg font-bold pr-4"/>
+                    @foreach ($movie->celebrities as $celebrity)
+                    <a href="{{ route('test', $celebrity) }}">
+                        <div class="flex pr-16">
+                            {{$celebrity->name}}
+                        </div>
+                    </a>
+                    @endforeach
                 </div>
+                <div class="flex grid-cols-2 py-4">
+                    <div>
+                        <x-label for="genre" value="Genres:" class="text-lg font-bold pr-4"/>
+                    </div>
 
+                    <div>
+                        @foreach ($movie->genres as $genre)
+                        <a href="{{ route('genres.show', $genre) }}">
+                            <div class="flex pr-16">
+                                {{$genre->type}}
+                            </div>
+                        </a>
+                        @endforeach
+                    </div>
+
+                </div>
             </div>
-            <div>
+
+            <div class="border-pink-400 border-2 border-opacity-75 py-4 px-4 w-2/5">
                 {{$movie->blurb}}
             </div>
-            <div>
-                <x-label for="celebrity" value="Celebs"/>
-                @foreach ($movie->celebrities as $celebrity)
-                <a href="{{ route('test', $celebrity) }}" class="flex grid gap-2 grid-cols-2">
-                    <div>
-                        {{$celebrity->name}}
-                    </div>
-                </a>
-                @endforeach
-            </div>
-            <div>
-                <x-label for="genre" value="Genres"/>
-                @foreach ($movie->genres as $genre)
-                <a href="{{ route('genres.show', $genre) }}" class="flex grid gap-2 grid-cols-2">
-                    <div>
-                        {{$genre->type}}
-                    </div>
-                </a>
 
-                @endforeach
-
-            </div>
         </div>
     </div>
 </x-app-layout>
