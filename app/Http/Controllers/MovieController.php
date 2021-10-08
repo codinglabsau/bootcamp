@@ -21,9 +21,7 @@ class MovieController extends Controller
 
     public function show(Movie $movie)
     {
-
-        $movie->load('celebrities');
-        $movie->load('genres');
+        $movie->load(['celebrities', 'genres']);
         return view('movies.show', compact('movie'));//->with($celebrities);
     }
 
@@ -31,6 +29,7 @@ class MovieController extends Controller
     {
         return view('movies.create');
     }
+
     public function store(Request $request)
     {
         Movie::create(

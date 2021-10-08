@@ -7,11 +7,14 @@
                 </h2>
             </div>
 
-            <div>
-                <a href="{{ route('movies.create') }}">
-                    <button> Add</button>
-                </a>
-            </div>
+            @auth
+                <div>
+                    <a href="{{ route('movies.create') }}">
+                        <button> Add</button>
+                    </a>
+                </div>
+            @endauth
+
         </div>
     </x-slot>
 
