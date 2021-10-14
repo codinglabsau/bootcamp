@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Movie;
 use App\Models\Celebrity;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,9 @@ class CelebrityController extends Controller
 
     public function show(Celebrity $celebrity)
     {
-        return view('celebrities.show', compact('celebrity'));
+
+        $celebrity->load('movies');
+        return view('celebrities.show', compact('celebrity'));//->with($movies);
     }
 
     public function create()
@@ -32,6 +35,7 @@ class CelebrityController extends Controller
             'dob' => ['required', 'date'],
             'nationality' => ['required', 'string', 'min:4'],
             'bio' => ['required', 'string'],
+            'poster' => ['required', 'string', 'min:16'],
         ]));
 
         return redirect()->route('celebrities.index')->with('success', 'Celebrity added');
@@ -50,6 +54,7 @@ class CelebrityController extends Controller
             'dob' => ['required', 'date'],
             'nationality' => ['required', 'string', 'min:4'],
             'bio' => ['required', 'string'],
+            'poster' => ['required', 'string', 'min:16'],
         ]));
         
         return redirect()->route('celebrities.show', $celebrity)->with('success', 'Celebrity added');

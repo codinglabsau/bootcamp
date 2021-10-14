@@ -26,6 +26,16 @@ class CelebrityFactory extends Factory
             'dob' => $this->faker->date,
             'nationality' => $this->faker->country,
             'bio' => $this->faker->text,
+            'poster' => $this->randomposter(),
         ];
+    }
+
+    public function randomposter()
+    {
+        $posters = [
+            'https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg'
+        ];
+
+        return $posters[array_rand($posters)];
     }
 }
