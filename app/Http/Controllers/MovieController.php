@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Celebrity;
+use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class MovieController extends Controller
 {
@@ -22,24 +24,34 @@ class MovieController extends Controller
     public function show(Movie $movie)
     {
         $movie->load(['celebrities', 'genres']);
-        return view('movies.show', compact('movie'));//->with($celebrities);
+        return view('movies.show', compact('movie'));
     }
 
     public function create()
     {
-        return view('movies.create');
+        $celebrities = Celebrity::select('id', 'name')->get();
+        $genres = Genre::select('id', 'type')->get();
+        return view('movies.create')->with(['celebrities' => $celebrities, 'genres'=>$genres]);
     }
 
     public function store(Request $request)
     {
-        Movie::create(
+        $movie = Movie::create(
             $request->validate([
             'title' => ['required', 'string', 'min:3'],
             'release_date' => ['required', 'date'],
             'poster' => ['required', 'string', 'min:16'],
             'trailer' => ['required', 'string', 'min:16'],
-            'blurb' => ['required', 'string', 'max:500']
+            'blurb' => ['required', 'string', 'max:500'],
             ]));
+
+        $genres = $request->validate(['genres' => ['required', 'array']]);
+
+        $celebrities = $request->validate(['celebrities' => ['required', 'array']]);
+
+        dd(Arr::flatten($genres));
+        $movie->genres()->syncWithoutDetaching($genres);
+        $movie->celebrities()->syncWithoutDetaching($celebrities);
 
         return redirect()->route('movies.index')->with('success', 'New movie has been added to the website');
 
