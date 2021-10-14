@@ -70,21 +70,45 @@
                     <!--cell 3-->
                     <div class="justify-self-center">
                         <!--Celebrities-->
-                        <x-label for="celebrity" value="Celebrities"/>
-
-                        <textarea class="leading-normal border-pink-500 border bg-purple-800 bg-opacity-25"
-                        name="celebrities"
-                        id="celebrities"> Existing Celebrities</textarea>
+                        <x-label for="celebrities" value="Celebrities"/>
+                        <div class="border-pink-500 border bg-purple-800 bg-opacity-25 pl-8 h-32 w-full overflow-auto">
+                            @foreach ($celebrities as $celebrity)
+                                <label class="grid grid-flow-col items-center">
+                                    <input
+                                    type="checkbox"
+                                    class="border-pink-500 border bg-purple-800 bg-opacity-25"
+                                    name="celebrities[]"
+                                    value="{{$celebrity->id}}"
+                                    {{  $movie->celebrities->contains($celebrity->id) ? 'checked' : ''}}
+                                    @if (in_array($celebrity->id,old('genres', [])))
+                                        checked
+                                    @endif>
+                                    <span>{{$celebrity->name}}</span>
+                                </label>
+                            @endforeach
+                        </div>
                     </div>
 
                     <!--cell 4-->
                     <div class="justify-self-center">
                         <!--Genre-->
-                        <x-label for="genre" value="Genres"/>
-
-                        <textarea class="leading-normal border-pink-500 border bg-purple-800 bg-opacity-25"
-                        name="genres"
-                        id="genres"> Existing Genres</textarea>
+                        <x-label for="genres" value="Genres"/>
+                        <div class="border-pink-500 border bg-purple-800 bg-opacity-25 pl-8 h-32 w-full overflow-auto">
+                            @foreach ($genres as $genre)
+                                <label class="grid grid-flow-col items-center">
+                                    <input
+                                    type="checkbox"
+                                    class="border-pink-500 border bg-purple-800 bg-opacity-25"
+                                    name="genres[]"
+                                    value="{{$genre->id}}"
+                                    {{  $movie->genres->contains($genre->id) ? 'checked' : ''}}
+                                    @if (in_array($genre->id,old('genres', [])))
+                                        checked
+                                    @endif>
+                                    <span>{{$genre->type}}</span>
+                                </label>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </x-form>

@@ -33,8 +33,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
 
-
-
 });
 
 // Movie

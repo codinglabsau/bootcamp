@@ -8,6 +8,8 @@ use Tests\TestCase;
 
 class MovieIndexTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Tests for Movies.Index
      *
