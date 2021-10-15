@@ -23,7 +23,7 @@ class MovieFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence,
+            'title' => $this->faker->sentence(3),
             'release_date' => $this->faker->date(),
             'poster' => $this->randomposter(),
             'trailer' => $this->randomtrailer(),
