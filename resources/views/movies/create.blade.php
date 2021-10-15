@@ -4,18 +4,18 @@
             {{ __('Create a Movie') }}
         </h2>
     </x-slot>
-    <div class="grid grid-cols-1">
+    <div class="grid grid-cols-1 bg-black bg-opacity-10 pt-8">
         <div class="w-1/2 justify-self-center">
             <x-form :action="route('movies.store')" method="POST" buttonLabel="CREATE">
                 @csrf
-                <div class="flex grid grid-cols-1 gap-y-6 gap-x-2 place-content-between text-white border-pink-500 border-2 border-opacity-50 bg-purple-800 bg-opacity-25 px-4 py-6 md:grid-cols-2">
+                <div class="flex grid grid-cols-1 gap-y-6 gap-x-2 place-content-between text-white bg-blue-900 bg-opacity-20 px-4 py-6 rounded-md md:grid-cols-2">
                     <!-- cell 1-->
                     <div class="grid grid-flow-row gap-y-2 justify-self-center">
                         <!--Title-->
                         <div>
                             <x-label for="title" value="Title"/>
 
-                            <x-input class="border-pink-500 border bg-purple-800 bg-opacity-25"
+                            <x-input class="border-purple-500 border-opacity-70 bg-purple-800 bg-opacity-25 focus-within:bg-opacity-5"
                             type="text"
                             name="title"
                             id="title"
@@ -26,7 +26,7 @@
                         <div>
                             <x-label for="release_date" value="Release Date"/>
 
-                            <x-input class="border-pink-500 border bg-purple-800 bg-opacity-25"
+                            <x-input class="border-purple-500 border-opacity-70 bg-purple-800 bg-opacity-25 focus-within:bg-opacity-5"
                             type="date"
                             name="release_date"
                             id="release_date"
@@ -36,7 +36,7 @@
                         <div>
                             <x-label for="poster" value="Poster"/>
 
-                            <x-input class="border-pink-500 border bg-purple-800 bg-opacity-25"
+                            <x-input class="border-purple-500 border-opacity-70 bg-purple-800 bg-opacity-25 focus-within:bg-opacity-5"
                             type="text"
                             name="poster"
                             id="poster"
@@ -46,7 +46,7 @@
                         <div>
                             <x-label for="trailer" value="Trailer"/>
 
-                            <x-input class="border-pink-500 border bg-purple-800 bg-opacity-25"
+                            <x-input class="border-purple-500 border-opacity-70 bg-purple-800 bg-opacity-25 focus-within:bg-opacity-5"
                             type="text"
                             name="trailer"
                             id="trailer"
@@ -55,12 +55,12 @@
                     </div>
 
                     <!--cell 2-->
-                    <div class="justify-self-center grid grid-cols-1">
+                    <div class="justify-self-center">
                         <!--Blurb-->
-                        <div class="self-end">
+                        <div>
                             <x-label for="blurb" value="Blurb"/>
 
-                            <textarea class="leading-normal border-pink-500 border bg-purple-800 bg-opacity-25"
+                            <textarea class="flex h-60 leading-normal border-purple-500 border-opacity-70 bg-purple-800 bg-opacity-25 focus-within:bg-opacity-5"
                             name="blurb"
                             id="blurb"></textarea>
                         </div>
@@ -70,15 +70,15 @@
                     <div class="justify-self-center">
                         <!--Celebrities-->
                         <x-label for="celebrities" value="Celebrities"/>
-                        <div class="border-pink-500 border bg-purple-800 bg-opacity-25 pl-8 h-32 w-full overflow-auto">
+                        <div class="bg-black bg-opacity-25 pt-4 px-8 h-60 w-64 overflow-auto shadow-lg">
                             @foreach ($celebrities as $celebrity)
-                                <label class="grid grid-flow-col items-center">
+                                <label class="flex items-center space-x-2">
                                     <input
                                     type="checkbox"
-                                    class="border-pink-500 border bg-purple-800 bg-opacity-25"
+                                    class="border-purple-500 border-opacity-70"
                                     name="celebrities[]"
                                     value="{{$celebrity->id}}">
-                                    <span>{{$celebrity->name}}</span>
+                                    <span >{{$celebrity->name}}</span>
                                 </label>
                             @endforeach
                         </div>
@@ -88,12 +88,12 @@
                     <div class="justify-self-center">
                         <!--Genre-->
                         <x-label for="genres" value="Genres"/>
-                        <div class="border-pink-500 border bg-purple-800 bg-opacity-25 pl-8 h-32 w-full overflow-auto">
+                        <div class="bg-black bg-opacity-25 pt-4 px-8 h-60 w-64 overflow-auto shadow-lg">
                             @foreach ($genres as $genre)
-                                <label class="grid grid-flow-col items-center">
+                                <label class="flex items-center space-x-2">
                                     <input
                                     type="checkbox"
-                                    class="border-pink-500 border bg-purple-800 bg-opacity-25"
+                                    class="border-purple-500 border-opacity-70"
                                     name="genres[]"
                                     value="{{$genre->id}}">
                                     <span>{{$genre->type}}</span>
@@ -102,6 +102,18 @@
                         </div>
                     </div>
                 </div>
+                @error('title')
+                    <p>{{$message}}</p>
+                @enderror
+                @error('poster')
+                    <p>{{$message}}</p>
+                @enderror
+                @error('trailer')
+                    <p>{{$message}}</p>
+                @enderror
+                @error('blurb')
+                    <p>{{$message}}</p>
+                @enderror
             </x-form>
         </div>
     </div>

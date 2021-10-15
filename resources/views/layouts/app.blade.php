@@ -17,12 +17,12 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-black text-pink-400">
+        <div class="min-h-screen bg-gradient-to-r from-indigo-900 to-gray-900 text-pink-400">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
-            <header class="bg-black shadow ">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-pink-400">
+            <header class="bg-gray-900 bg-opacity-60">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-white text-opacity-80">
                     {{ $header }}
                 </div>
             </header>
