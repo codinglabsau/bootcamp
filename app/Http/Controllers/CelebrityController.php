@@ -24,6 +24,7 @@ class CelebrityController extends Controller
     public function create()
     {
         $movies = Movie::select('id', 'title')->get();
+
         return view('celebrities.create')->with(['movies' => $movies]);
     }
 

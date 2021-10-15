@@ -22,7 +22,10 @@ class MovieEditTest extends TestCase
      */
     public function test_movie_edit_screen_can_render()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'is_admin' => true
+        ]);
+
         $movie = Movie::factory()->create();
 
         $this->actingAs($user)
@@ -35,12 +38,14 @@ class MovieEditTest extends TestCase
         $movie = Movie::factory()->create();
 
         $this->get('/movies/'.$movie->id.'/edit')
-        ->assertRedirect('/login');
+            ->assertRedirect('/');
     }
 
     public function test_movie_edit_movie_info_updated()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'is_admin' => true
+        ]);
 
         $genreOne = Genre::factory()->create();
         $genreTwo = Genre::factory()->create();
@@ -135,10 +140,10 @@ class MovieEditTest extends TestCase
 
     public function test_movie_edit_attribute_throw_validation_error()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'is_admin' => true
+        ]);
         $movie = Movie::factory()->create();
-
-        // $this->withoutExceptionHandling();
 
         $this->actingAs($user)->put('/movies/'.$movie->id, [
             'title' => 'A Test movie',

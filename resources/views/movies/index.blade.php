@@ -7,7 +7,7 @@
                 </h2>
             </div>
 
-            @auth
+            @if(auth()->check() && auth()->user()->is_admin)
                 <div>
                     <a href="{{ route('movies.create') }}">
                         <button> Add</button>

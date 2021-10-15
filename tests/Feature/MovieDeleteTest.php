@@ -17,9 +17,12 @@ class MovieDeleteTest extends TestCase
      *
      * @return void
      */
-    public function test_movie_delete_authurised_user_can_remove_movie()
+    public function test_movie_delete_authorised_user_can_remove_movie()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'is_admin' => true
+        ]);
+
         $movie = Movie::factory()->create();
 
         $this->actingAs($user)
@@ -34,7 +37,7 @@ class MovieDeleteTest extends TestCase
         $movie = Movie::factory()->create();
 
         $this->delete('/movies/'.$movie->id)
-        ->assertRedirect('/login');
+        ->assertRedirect('/');
     }
 
     public function test_movie_delete_cannot_delete_nonexistent_movie()

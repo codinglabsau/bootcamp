@@ -20,16 +20,32 @@ class MovieCreateTest extends TestCase
      */
     public function test_movie_create_screen_requires_authorized_user()
     {
-        $user = User::factory()->make();
+        $user = User::factory()->create([
+            'is_admin' => true
+        ]);
 
         $this->actingAs($user)
         ->get('/movies')
         ->assertOk();
     }
 
+    /** @test  */
+    public function test_users_cannot_access_movies_create_page()
+    {
+        $user = User::factory()->create([
+            'is_admin' => false
+        ]);
+
+        $this->actingAs($user)
+            ->get('/movies/create')
+            ->assertRedirect('/');
+    }
+
     public function test_movie_create_new_movie_can_be_added() // No fails
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'is_admin' => true
+        ]);
 
         $genreOne = Genre::factory()->create();
         $genreTwo = Genre::factory()->create();
@@ -85,7 +101,9 @@ class MovieCreateTest extends TestCase
 
     public function test_movie_create_attribute_throw_validation_error()
     {
-        $user = User::factory()->make();
+        $user = User::factory()->create([
+            'is_admin' => true
+        ]);
 
         $this->actingAs($user)
         ->post('/movies', [
@@ -100,7 +118,9 @@ class MovieCreateTest extends TestCase
 
     public function test_movie_create_attribute_throws_requirement_error(){
 
-        $user = User::factory()->make();
+        $user = User::factory()->create([
+            'is_admin' => true
+        ]);
 
         $this->actingAs($user)
         ->post('/movies', [

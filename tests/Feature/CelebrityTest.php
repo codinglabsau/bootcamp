@@ -65,6 +65,7 @@ class CelebrityTest extends TestCase
         $user = User::factory()->create([
             'is_admin' => false
         ]);
+
         $celebrity = Celebrity::factory()->create();
 
         $this->actingAs($user)

@@ -7,13 +7,13 @@
                 </h2>
             </div>
 
-            @auth
+            @if(auth()->check() && auth()->user()->is_admin)
                 <div>
                     <a href="{{ route('celebrities.create') }}">
                         <button> Add</button>
                     </a>
                 </div>
-            @endauth
+            @endif
 
         </div>
     </x-slot>
