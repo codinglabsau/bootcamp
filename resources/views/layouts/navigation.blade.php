@@ -21,7 +21,7 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            <div class="hidden px-6 py-4 sm:block">
                 @if (Route::has('login'))
                     @auth
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
