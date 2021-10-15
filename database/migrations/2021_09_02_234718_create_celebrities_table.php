@@ -18,7 +18,8 @@ class CreateCelebritiesTable extends Migration
             $table->string('name');
             $table->date('dob');
             $table->string('nationality');
-            $table->text('bio');
+            $table->string('bio');
+            $table->string('poster')->nullable();
             $table->timestamps();
             $table->softdeletes();
         });
