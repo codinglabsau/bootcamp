@@ -8,6 +8,7 @@ use App\Models\Review;
 use App\Models\Celebrity;
 use App\Models\GenreMovie;
 use App\Models\CelebrityMovie;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,11 +20,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Genre::factory(10)->create();
-        Movie::factory(10)->create();
-        Review::factory(10)->create();
-        Celebrity::factory(10)->create();
-        CelebrityMovie::factory(10)->create();
-        GenreMovie::factory(10)->create();
+        User::factory(20)->create();
+        Movie::factory(250)->create();
+        Review::factory(20)->create();
+        Celebrity::factory(30)->create();
+        $this->call(GenreSeeder::class);
+        CelebrityMovie::factory(500)->create();
+        GenreMovie::factory(300)->create();
     }
 }

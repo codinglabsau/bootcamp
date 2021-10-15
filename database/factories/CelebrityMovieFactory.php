@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Celebrity;
 use App\Models\CelebrityMovie;
+use App\Models\Movie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CelebrityMovieFactory extends Factory
@@ -24,7 +25,7 @@ class CelebrityMovieFactory extends Factory
     {
         return [
             'celebrity_id' => Celebrity::inRandomOrder()->first()->id,
-            'movie_id' => $this->faker->randomDigitNot(8),
+            'movie_id' => Movie::inRandomOrder()->first()->id,
         ];
     }
 }
