@@ -13,7 +13,7 @@ class Movie extends Model
     use SoftDeletes, HasFactory;
 
     protected $casts = [
-        'release_date' => 'date'
+        'release_date' => 'date',
     ];
 
     public function genres() : Relations\BelongsToMany

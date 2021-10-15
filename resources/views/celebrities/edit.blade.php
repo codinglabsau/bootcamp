@@ -59,12 +59,32 @@
                             <x-label for="poster" value="Poster"/>
 
                             <x-input class="border-pink-500 border bg-purple-800 bg-opacity-25"
-                            type="text"
+                            type="string"
                             name="poster"
                             id="poster"
                             :value="old('poster', $celebrity->poster)"/>
                         </div>
                     </div>
+
+                    <div class="justify-self-center">
+                        <!--Movies-->
+                        <x-label for="movies" value="Movies"/>
+                        <div class="border-pink-500 border bg-purple-800 bg-opacity-25 pl-8 h-32 w-full overflow-auto">
+                            @foreach ($movies as $movie)
+                                <label class="grid grid-flow-col items-center">
+                                    <input
+                                    type="checkbox"
+                                    class="border-pink-500 border bg-purple-800 bg-opacity-25"
+                                    name="movies[]"
+                                    value="{{$movie->id}}"
+                                    {{  $celebrity->movies->contains($movie->id) ? 'checked' : ''}}
+                                    @if (in_array($movie->id,old('genres', [])))
+                                        checked
+                                    @endif>
+                                    <span>{{$movie->title}}</span>
+                                </label>
+                            @endforeach
+                        </div>
                 </div>
             </x-form>
         </div>

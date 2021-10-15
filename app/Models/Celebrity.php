@@ -14,13 +14,17 @@ class Celebrity extends Model
 {
     use HasFactory, SoftDeletes;
 
-
     protected $fillable = [
         'name', 
         'dob',
         'nationality',
         'bio',
     ];
+
+    protected $casts = [
+        'dob' => 'date',
+    ];
+
 
     public function movies(): Relations\BelongsToMany
     {
