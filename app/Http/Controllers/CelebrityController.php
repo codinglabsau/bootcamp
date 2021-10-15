@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\Celebrity;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 
 class CelebrityController extends Controller
 {
-    public function index() //print all data in Celebrity database
+    public function index()
     {
         return view('celebrities.index', [
             'celebrities' => Celebrity::orderBy('name', 'asc')->paginate(20)
@@ -20,7 +18,7 @@ class CelebrityController extends Controller
     public function show(Celebrity $celebrity)
     {
         $celebrity->load('movies');
-        return view('celebrities.show', compact('celebrity'));//->with($movies);
+        return view('celebrities.show', compact('celebrity'));
     }
 
     public function create()
@@ -30,7 +28,7 @@ class CelebrityController extends Controller
     }
 
     public function store(Request $request)
-    {   
+    {
         $request->validate([
             'name' => ['required', 'string', 'min:1'],
             'dob' => ['required', 'date'],
@@ -84,7 +82,7 @@ class CelebrityController extends Controller
         $movies = $request->input('movies');
 
         $celebrity->movies()->sync($movies);
-        
+
         return redirect()->route('celebrities.show', $celebrity)->with('success', 'Celebrity added');
     }
 

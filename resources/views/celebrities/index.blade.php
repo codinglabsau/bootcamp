@@ -19,24 +19,19 @@
     </x-slot>
 
     <div class="pl-8 pt-2 pb-2">
-        @foreach ($celebrities as $celebrity)
-            <div class="flex grid grid-cols-2">
-                <a href="{{ route('celebrities.show', $celebrity) }}" class="flex grid gap-2 grid-cols-2">
-                    <div class="w-12 h-24">
-                        <img src="{{ url($celebrity->poster) }}" alt="poster">
+            <div class="grid grid-cols-4 gap-4">
+                @foreach ($celebrities as $celebrity)
+                <a href="{{ route('celebrities.show', $celebrity) }}" class="text-center justify-center space-y-3">
+                    <div class="mx-auto w-1/2 h-40">
+                        <img src="{{ url($celebrity->poster) }}" alt="poster"  class="object-cover h-full w-full">
                     </div>
 
                     <div class="justify-self-start">
                         {{ $celebrity->name }}
                     </div>
-                </a>
-                <div>
-                    ( {{$celebrity->dob}} )
-                </div>
-
+                @endforeach
             </div>
 
-        @endforeach
-        {{$celebrities->links()}}
+        {{ $celebrities->links() }}
     </div>
 </x-app-layout>
