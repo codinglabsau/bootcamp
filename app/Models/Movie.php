@@ -16,11 +16,13 @@ class Movie extends Model
         'release_date' => 'date',
     ];
 
-    public function genres() : Relations\BelongsToMany
+    protected $guarded = [];
+
+    public function genres(): Relations\BelongsToMany
     {
         /*** calls relation of movie to genre through gerne_movie
-        */
-        return $this->belongsToMany(Genre::class);
+         */
+        return $this->belongsToMany(Genre::class, 'genre_movies');
     }
 
     public function celebrities(): Relations\BelongsToMany

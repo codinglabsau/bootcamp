@@ -1,11 +1,11 @@
-<nav x-data="{ open: false }" class="bg-black border-b border-pink-400">
+<nav x-data="{ open: false }" class="bg-gray-900 bg-opacity-60">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('movies.index') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-purple-600" />
                     </a>
                 </div>
@@ -14,6 +14,9 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
                     <!-- Update this so route goes to the result/search screen -->
+                    <x-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.*')">
+                        {{ __('Movies') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('celebrities.index')" :active="request()->routeIs('dashboard')">
                         {{ __('Celebrities') }}
                     </x-nav-link>
@@ -21,7 +24,7 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            <div class="hidden px-6 py-4 sm:block">
                 @if (Route::has('login'))
                     @auth
                     <div class="hidden sm:flex sm:items-center sm:ml-6">

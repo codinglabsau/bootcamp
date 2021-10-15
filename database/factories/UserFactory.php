@@ -26,11 +26,12 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => bcrypt("123456"), // password
+            'password' => bcrypt('123456'), // password
             'remember_token' => Str::random(10),
             'is_admin' => false
         ];
     }
+
     /**
      * Indicate that the model's email address should be unverified.
      *

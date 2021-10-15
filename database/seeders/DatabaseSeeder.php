@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\Review;
 use App\Models\Celebrity;
@@ -20,12 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Genre::factory(20)->create();
-        Movie::factory(50)->create();
-        Review::factory(250)->create();
-        Celebrity::factory(20)->create();
-        CelebrityMovie::factory(50)->create();
-        GenreMovie::factory(500)->create();
-        User::factory(300)->create();
+        User::factory(20)->create();
+        Movie::factory(250)->create();
+        Review::factory(20)->create();
+        Celebrity::factory(30)->create();
+        $this->call(GenreSeeder::class);
+        CelebrityMovie::factory(500)->create();
+        GenreMovie::factory(300)->create();
     }
 }

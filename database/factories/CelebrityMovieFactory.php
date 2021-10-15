@@ -24,8 +24,8 @@ class CelebrityMovieFactory extends Factory
     public function definition()
     {
         return [
-            'celebrity_id' =>Celebrity::inRandomOrder()->first()->id,
-            'movie_id' =>Movie::inRandomOrder()->first()->id
+            'celebrity_id' => Celebrity::inRandomOrder()->first()->id,
+            'movie_id' => Movie::inRandomOrder()->first()->id
         ];
     }
 }

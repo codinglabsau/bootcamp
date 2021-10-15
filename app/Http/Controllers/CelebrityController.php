@@ -92,5 +92,4 @@ class CelebrityController extends Controller
 
         return redirect()->route('celebrities.index')->with('success', 'Celebrity successfully deleted');
     }
-
 }
