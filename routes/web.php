@@ -16,7 +16,9 @@ use App\Http\Controllers\CelebrityController;
 |
 */
 
-Route::get('/', [MovieController::class, 'index'])->name('welcome'); //@TODO add a homepage
+Route::get('/', function(){
+    return view('home');
+})->name('welcome');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
