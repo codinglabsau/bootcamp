@@ -29,9 +29,9 @@
 
         <!-- Page Content -->
         <main>
-            @if(session()->has('success'))
+            @if(session()->has('success, error'))
                 <div class="bg-indigo-400 p-4 my-2 mx-10 rounded-2xl text-indigo-900">
-                        {{ session('success') }}
+                        {{ $message }}
                 </div>
             @endif
             {{ $slot }}

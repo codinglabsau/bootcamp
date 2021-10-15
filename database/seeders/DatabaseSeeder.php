@@ -2,13 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Genre;
+use App\Models\User;
 use App\Models\Movie;
 use App\Models\Review;
 use App\Models\Celebrity;
 use App\Models\GenreMovie;
 use App\Models\CelebrityMovie;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

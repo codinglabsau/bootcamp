@@ -4,22 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Celebrity extends Model
 {
     use HasFactory, SoftDeletes;
 
-
     protected $fillable = [
         'name',
         'dob',
         'nationality',
         'bio',
+    ];
+
+    protected $casts = [
+        'dob' => 'date',
     ];
 
 
