@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use Arr;
 use App\Models\Movie;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use PhpParser\Node\Expr\Cast\Array_;
 
 class MovieFactory extends Factory
 {
@@ -52,7 +52,7 @@ class MovieFactory extends Factory
             'https://m.media-amazon.com/images/M/MV5BMWZmYTI4MDctMzU4OC00ODJmLTkwMTgtYjRmMDRkMzc3NWZkXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg'
         ];
 
-        return $posters[array_rand($posters)];
+        return Arr::random($posters);
     }
 
     public function randomtrailer()
@@ -72,6 +72,6 @@ class MovieFactory extends Factory
 
         ];
 
-        return $trailers[array_rand($trailers)];
+        return  Arr::random($trailers);
     }
 }
