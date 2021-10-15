@@ -16,12 +16,9 @@ use App\Http\Controllers\MovieController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [MovieController::class, 'index'])->name('welcome'); //@TODO add a homepage
 
 Route::middleware(['auth'])->group(function () {
-
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

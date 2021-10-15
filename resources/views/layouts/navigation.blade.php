@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('movies.index') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-purple-600" />
                     </a>
                 </div>
@@ -14,7 +14,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
                     <!-- Update this so route goes to the result/search screen -->
-                    <x-nav-link :href="route('movies.index')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.*')">
                         {{ __('Movies') }}
                     </x-nav-link>
                 </div>
